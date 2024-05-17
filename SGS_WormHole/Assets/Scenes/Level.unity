@@ -9465,6 +9465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Comics_start
       objectReference: {fileID: 0}
+    - target: {fileID: 3717103208068764009, guid: a4a5828174931ac4cad950d929ae3af5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7353738203480771182, guid: a4a5828174931ac4cad950d929ae3af5, type: 3}
       propertyPath: m_Color.a
       value: 0.003921569
