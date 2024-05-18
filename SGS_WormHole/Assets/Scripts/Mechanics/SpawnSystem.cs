@@ -7,6 +7,7 @@ public class SpawnSystem : MonoBehaviour
 {
     public Action OnSpawn;
     public Action OnRespawn;
+    public Action <Transform> OnSetLastPointSpawn;
 
     [SerializeField] private List<Transform> _listPointSpawn;
     [SerializeField] private Transform _lastPointSpawn;
@@ -16,42 +17,50 @@ public class SpawnSystem : MonoBehaviour
     private void Start()
     {
         OnRespawn += Respawn;
+        OnSetLastPointSpawn += SetLastPointSpawn;
         _playerHPSystem = GetComponent<PlayerHPSystem>();
     }
 
-    private void Update()
-    {
-        _lastPointSpawn = GetClosestSpawnPoint(transform.position);
-    }
-
-    private void Spawn()
-    {
-        transform.position  = _listPointSpawn[0].position;
-    }
+    //private void Update()
+    //{
+    //    _lastPointSpawn = GetClosestSpawnPoint(transform.position);
+    //}
 
     private void Respawn()
     {
-        transform.position = _lastPointSpawn.position;
+        if(_lastPointSpawn != null)
+        {
+            transform.position = _lastPointSpawn.position;  
+        }
+        else
+        {
+            transform.position = _listPointSpawn[0].position;
+        }
 
         int maxHealth = _playerHPSystem.GetMaxHP();
         _playerHPSystem.OnHeal?.Invoke(maxHealth);
     }
-    
-    public Transform GetClosestSpawnPoint(Vector3 position)
+
+    private void SetLastPointSpawn(Transform lastPointSpawn)
     {
-        Transform closestPoint = null;
-        float minDistance = float.MaxValue;
-    
-        foreach (Transform point in _listPointSpawn)
-        {
-            float distance = Vector3.Distance(position, point.position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                closestPoint = point;
-            }
-        }
-    
-        return closestPoint;
+        _lastPointSpawn = lastPointSpawn;
     }
+    
+    //public Transform GetClosestSpawnPoint(Vector3 position)
+    //{
+    //    Transform closestPoint = null;
+    //    float minDistance = float.MaxValue;
+    
+    //    foreach (Transform point in _listPointSpawn)
+    //    {
+    //        float distance = Vector3.Distance(position, point.position);
+    //        if (distance < minDistance)
+    //        {
+    //            minDistance = distance;
+    //            closestPoint = point;
+    //        }
+    //    }
+    
+    //    return closestPoint;
+    //}
 }
