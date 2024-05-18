@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerHPSystem : MonoBehaviour
 {
     public SpawnSystem spawnSystem;
+    public Menu menu;
     public Action<int> OnDemage;
     public Action<int> OnHeal;
     
@@ -32,8 +33,9 @@ public class PlayerHPSystem : MonoBehaviour
         if(_health <= 0)
         {
             //gameObject.SetActive(false);
-            spawnSystem.OnRespawn?.Invoke();
-            _health = _maxHealth;
+            //spawnSystem.OnRespawn?.Invoke();
+            menu.Activate();
+            //_health = _maxHealth;
         }
     }
 

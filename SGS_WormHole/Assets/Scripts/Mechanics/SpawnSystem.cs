@@ -11,9 +11,12 @@ public class SpawnSystem : MonoBehaviour
     [SerializeField] private List<Transform> _listPointSpawn;
     [SerializeField] private Transform _lastPointSpawn;
 
+    private PlayerHPSystem _playerHPSystem;
+
     private void Start()
     {
         OnRespawn += Respawn;
+        _playerHPSystem = GetComponent<PlayerHPSystem>();
     }
 
     private void Update()
@@ -29,6 +32,9 @@ public class SpawnSystem : MonoBehaviour
     private void Respawn()
     {
         transform.position = _lastPointSpawn.position;
+
+        int maxHealth = _playerHPSystem.GetMaxHP();
+        _playerHPSystem.OnHeal?.Invoke(maxHealth);
     }
     
     public Transform GetClosestSpawnPoint(Vector3 position)
