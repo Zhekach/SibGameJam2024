@@ -1531,7 +1531,7 @@ PrefabInstance:
     - target: {fileID: 4688404403464111780, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: _pauseMenu
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 109745415}
     - target: {fileID: 4688404403464111780, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: playerHPSystem
       value: 
@@ -1805,6 +1805,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
+--- !u!1 &109745415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2790910490992940208, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
+  m_PrefabInstance: {fileID: 103999464}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &111767920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4528362552183976, guid: 86496ff5b27bea840ad25d9fcc9c792e, type: 3}
