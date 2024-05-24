@@ -19,15 +19,16 @@ public class PauseMenu : MonoBehaviour
         {
             ResumeButton.SetActive(true);
             PauseBackground.SetActive(true);
+            SettingsButton.SetActive(true);
         }
         else
         {
             DeathBackground.SetActive(true);
             RespawnButton.SetActive(true);
+            SettingsButton.SetActive(false);
         }
 
         RestartButton.SetActive(true);
-        SettingsButton.SetActive(true);
         ExitButton.SetActive(true);
     }
 
