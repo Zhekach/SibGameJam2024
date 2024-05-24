@@ -10,6 +10,8 @@ namespace AI
         [SerializeField] private Transform _gun;
         
         public void Shot() => 
-            Instantiate(_prefab, _gun.position, _gun.rotation).transform.LookAt(_target.position);
+            Instantiate(_prefab, _gun.position, _gun.rotation)
+                .transform
+                .LookAt(_target.position);
     }
 }
