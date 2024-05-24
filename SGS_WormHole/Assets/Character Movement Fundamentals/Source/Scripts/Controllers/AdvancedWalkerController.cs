@@ -113,19 +113,23 @@ namespace CMF
 
         private void Update()
         {
-            
-            
             HandleCreatePlatformKeyInput();
-
+            
             HandleJumpKeyInput();
         }
         private void HandleCreatePlatformKeyInput()
         {
+            var newCreatePlatformKeyUpState = IsCreatePlatformKeyUp();
             var newCreatePlatformKeyPressedState = IsCreatePlatformKeyPressed();
 
-            if (newCreatePlatformKeyPressedState && CreatedPlatform.LifeSeconds == 0)
+            if (newCreatePlatformKeyUpState && CreatedPlatform.LifeSeconds == 0)
             {
                 CreatedPlatform.PlacePlatform(_playerRotationTransform);
+            }
+
+            if(newCreatePlatformKeyPressedState && CreatedPlatform.LifeSeconds == 0)
+            {
+                CreatedPlatform.ShowPlatformTarget(_playerRotationTransform);
             }
         }
 
@@ -268,6 +272,15 @@ namespace CMF
             return characterInput.IsJumpKeyPressed();
         }
 
+        protected virtual bool IsCreatePlatformKeyUp()
+        {
+            //If no character input script is attached to this object, return;
+            if (characterInput == null)
+                return false;
+
+            return characterInput.IsCreatePlatformKeyUp();
+        }
+                
         protected virtual bool IsCreatePlatformKeyPressed()
         {
             //If no character input script is attached to this object, return;

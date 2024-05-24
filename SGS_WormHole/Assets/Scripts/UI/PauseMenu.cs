@@ -1,64 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject _background;
-    [SerializeField] private GameObject _pauseMenu;
-    [SerializeField] private GameObject _settingsMenu;
+    public GameObject PauseBackground;
+    public GameObject DeathBackground;
+    public GameObject ResumeButton;
+    public GameObject RespawnButton;
+    public GameObject SettingsButton;
+    public GameObject RestartButton;
+    public GameObject ExitButton;
+    public SpawnSystem SpawnSystem;
 
-    private void Start()
+    public void Activate(int health)
     {
-        _background.SetActive(false);
-        _pauseMenu.SetActive(false);
-        _settingsMenu.SetActive(false);
-    }
+        if(health > 0)
+        {
+            ResumeButton.SetActive(true);
+            PauseBackground.SetActive(true);
+            SettingsButton.SetActive(true);
+        }
+        else
+        {
+            DeathBackground.SetActive(true);
+            RespawnButton.SetActive(true);
+            SettingsButton.SetActive(false);
+        }
 
-    public void Activate()
-    {
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        _background.SetActive(true);
-        _pauseMenu.SetActive(true);
-        _settingsMenu.SetActive(false);
+        RestartButton.SetActive(true);
+        ExitButton.SetActive(true);
     }
 
     public void Deactivate()
     {
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        _background.SetActive(false);
-        _pauseMenu.SetActive(false);
-        _settingsMenu.SetActive(false);
+        DeathBackground.SetActive(false);
+        PauseBackground.SetActive(false);
+        ResumeButton.SetActive(false);
+        RespawnButton.SetActive(false);
+        SettingsButton.SetActive(false);
+        RestartButton.SetActive(false);
+        ExitButton.SetActive(false);
     }
-
-    public void OpenSettings()
+    
+    public void Respawn()
     {
-        _pauseMenu.SetActive(false);
-        _settingsMenu.SetActive(true);
-    }
-
-    public void CloseSettings()
-    {
-        _pauseMenu.SetActive(true);
-        _settingsMenu.SetActive(false);
-    }
-
-    public void RestartScene()
-    {
-        Time.timeScale = 1;
-        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(sceneIndex);
-    }
-
-    public void GoToMainMenu()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SpawnSystem.OnRespawn?.Invoke();
     }
 }

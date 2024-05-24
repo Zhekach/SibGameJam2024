@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseInput : MonoBehaviour
 {
     [SerializeField] private KeyCode _pauseKey = KeyCode.Escape;
-    [SerializeField] private PauseMenu _pauseMenu;
+    [SerializeField] private Menu _pauseMenu;
 
     private bool _paused = false;
 

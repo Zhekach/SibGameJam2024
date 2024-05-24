@@ -3,8 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof (SpawnSystem))]
+
 public class PlayerHPSystem : MonoBehaviour
 {
+    public SpawnSystem spawnSystem;
+    public Menu menu;
     public Action<int> OnDemage;
     public Action<int> OnHeal;
     
@@ -13,6 +17,8 @@ public class PlayerHPSystem : MonoBehaviour
 
     private void Start()
     {
+        spawnSystem = GetComponent<SpawnSystem>();
+
         _maxHealth = _health;
         
         OnDemage += Damage;
@@ -25,7 +31,12 @@ public class PlayerHPSystem : MonoBehaviour
         _health -= damage;
         
         if(_health <= 0)
-            gameObject.SetActive(false);
+        {
+            //gameObject.SetActive(false);
+            //spawnSystem.OnRespawn?.Invoke();
+            menu.Activate();
+            //_health = _maxHealth;
+        }
     }
 
     private void Heal(int heal)
