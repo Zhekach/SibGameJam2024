@@ -35,9 +35,15 @@ namespace CMF
 		{
 			return Input.GetKey(_jumpKey);
 		}
+
 		public override bool IsCreatePlatformKeyPressed()
 		{
 			return Input.GetKey(_createPlatformKey);
+		}
+
+		public override bool IsCreatePlatformKeyUp()
+		{
+			return Input.GetKeyUp(_createPlatformKey);
 		}
     }
 }

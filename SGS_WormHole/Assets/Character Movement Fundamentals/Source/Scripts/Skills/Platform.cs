@@ -20,6 +20,13 @@ namespace CMF
             
             StartCoroutine(HideAfterDelay());
         }
+
+        public void ShowPlatformTarget(Transform tr)
+        {
+            transform.position = tr.position + tr.rotation * Vector3.forward * _platformDistance + Vector3.up * _defaultHeight;
+            gameObject.SetActive(true);
+        }
+
         private IEnumerator HideAfterDelay()
         {
             while (LifeSeconds > 0)
