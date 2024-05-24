@@ -1211,7 +1211,7 @@ PrefabInstance:
     - target: {fileID: 1103307931631778476, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 109745417}
     - target: {fileID: 1103307931631778476, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1446,19 +1446,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3690631240220305260, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3690631240220305260, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3690631240220305260, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3690631240220305260, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3726914410049045841, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1531,7 +1531,7 @@ PrefabInstance:
     - target: {fileID: 4688404403464111780, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: _pauseMenu
       value: 
-      objectReference: {fileID: 109745415}
+      objectReference: {fileID: 109745417}
     - target: {fileID: 4688404403464111780, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
       propertyPath: playerHPSystem
       value: 
@@ -1805,11 +1805,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
---- !u!1 &109745415 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2790910490992940208, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
+--- !u!114 &109745417 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 183414576115013445, guid: 629bdace0ead1194c9f5752cb0d742d7, type: 3}
   m_PrefabInstance: {fileID: 103999464}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e43d814ea54f444abdb023c8373912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &111767920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4528362552183976, guid: 86496ff5b27bea840ad25d9fcc9c792e, type: 3}
@@ -13358,7 +13364,7 @@ Transform:
   m_GameObject: {fileID: 1248449470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4229, y: 13.881, z: -1.5565}
+  m_LocalPosition: {x: -4.6874, y: 17.228, z: -1.7793}
   m_LocalScale: {x: 0.08762076, y: 0.70832, z: 0.0652689}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17360,6 +17366,10 @@ PrefabInstance:
       value: WITCH
       objectReference: {fileID: 0}
     - target: {fileID: 5822191542948674411, guid: 4a59b9650124e034cb15ecc7caf70ae3, type: 3}
+      propertyPath: _lastPointSpawn
+      value: 
+      objectReference: {fileID: 1248449471}
+    - target: {fileID: 5822191542948674411, guid: 4a59b9650124e034cb15ecc7caf70ae3, type: 3}
       propertyPath: _listPointSpawn.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -17370,7 +17380,7 @@ PrefabInstance:
     - target: {fileID: 5822191542948674411, guid: 4a59b9650124e034cb15ecc7caf70ae3, type: 3}
       propertyPath: _listPointSpawn.Array.data[1]
       value: 
-      objectReference: {fileID: 3862516695842011944}
+      objectReference: {fileID: 1248449471}
     - target: {fileID: 5822191542948674411, guid: 4a59b9650124e034cb15ecc7caf70ae3, type: 3}
       propertyPath: _listPointSpawn.Array.data[2]
       value: 
