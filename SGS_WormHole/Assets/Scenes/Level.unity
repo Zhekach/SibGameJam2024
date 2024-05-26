@@ -17573,7 +17573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4180178913852259353, guid: d09adb02ed288924db2c211ea917d073, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17603,6 +17603,9 @@ MonoBehaviour:
   _platformDistance: 5
   _defaultHeight: 1
   _timeBeforeHide: 3
+  _NormalColor: {r: 1, g: 1, b: 1, a: 1}
+  _TransporentColor: {r: 1, g: 1, b: 1, a: 1}
+  _material: {fileID: 2100000, guid: 0999056552def3f408e3ff61dd3cab62, type: 2}
   LifeSeconds: 0
 --- !u!4 &1725277444 stripped
 Transform:
