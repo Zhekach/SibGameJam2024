@@ -85,6 +85,10 @@ namespace CMF
 
         [SerializeField] private Sounds sounds;
 
+        [Header("Test")]
+        public float VelosityMagnitudeIndicator;
+        public bool isWalkTriggered;
+
         //Get references to all necessary components;
         void Awake()
         {
@@ -192,8 +196,11 @@ namespace CMF
 
             //Set mover velocity;		
             mover.SetVelocity(_velocity);
-            
-            if (_velocity.magnitude != 0)
+
+            VelosityMagnitudeIndicator = _velocity.magnitude;
+
+            //if (_velocity.magnitude != 0)
+            if (isWalkTriggered == true)
             {
                 Animator.SetTrigger("Walk");
             }
