@@ -17475,6 +17475,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1719723189}
     - target: {fileID: 8798059979955060788, guid: 4a59b9650124e034cb15ecc7caf70ae3, type: 3}
+      propertyPath: jumpSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798059979955060788, guid: 4a59b9650124e034cb15ecc7caf70ae3, type: 3}
       propertyPath: CreatedPlatform
       value: 
       objectReference: {fileID: 1722053425}
@@ -21708,7 +21712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e4ed9d0842abf49ab7461b4deaed7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkTriggered: 0
   Animator: {fileID: 0}
 --- !u!1001 &2081357510
 PrefabInstance:

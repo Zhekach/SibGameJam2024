@@ -201,20 +201,33 @@ namespace CMF
             VelosityMagnitudeIndicator = _velocity.magnitude;
 
             if (_velocity.magnitude != 0 && currentControllerState == ControllerState.Grounded)
-            //if (isWalkTriggered == true)
             {
-                AnimatorController.OnRun?.Invoke(true);
                 AnimatorController.OnIdle?.Invoke(false);
+                AnimatorController.OnRun?.Invoke(true);
+                AnimatorController.OnFall?.Invoke(false);
+            }
+            else if(_velocity.magnitude == 0 && currentControllerState == ControllerState.Grounded)
+            {
+                AnimatorController.OnIdle?.Invoke(true);
+                AnimatorController.OnRun?.Invoke(false);
+                AnimatorController.OnFall?.Invoke(false);
+            } 
+            else if(currentControllerState == ControllerState.Falling)
+            {
+                AnimatorController.OnIdle?.Invoke(false);
+                AnimatorController.OnRun?.Invoke(false);
+                AnimatorController.OnFall?.Invoke(true);
             }
             else
             {
+                AnimatorController.OnIdle?.Invoke(false);
                 AnimatorController.OnRun?.Invoke(false);
-                AnimatorController.OnIdle?.Invoke(true);
+                AnimatorController.OnFall?.Invoke(false);
             }
 
             if(jumpKeyWasPressed)
             {
-                AnimatorController.OnJump.Invoke();
+                AnimatorController.OnJump?.Invoke();
             }
 
             //Store velocity for next frame;
