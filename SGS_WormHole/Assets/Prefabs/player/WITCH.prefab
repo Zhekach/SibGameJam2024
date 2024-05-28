@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5e44db14072ea4c964da3b192181c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
+  AnimatorController: {fileID: 0}
   CreatedPlatform: {fileID: 0}
   movementSpeed: 4
   airControlRate: 2
@@ -406,6 +406,8 @@ MonoBehaviour:
   currentControllerState: 2
   cameraTransform: {fileID: 1973367014134034472}
   sounds: {fileID: 0}
+  VelosityMagnitudeIndicator: 0
+  isWalkTriggered: 0
 --- !u!114 &9220214698348846029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf93969321f258b4ca222c7c9147ff1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnSystem: {fileID: 0}
+  menu: {fileID: 0}
   _health: 100
 --- !u!114 &608504470098189061
 MonoBehaviour:
@@ -813,9 +817,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6031808634886875929, guid: d78a5622b174fc44380a46c6436e3aee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2726796346223606155}
-    - targetCorrespondingSourceObject: {fileID: 6031808634886875929, guid: d78a5622b174fc44380a46c6436e3aee, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7188644200082538726}
   m_SourcePrefab: {fileID: 100100000, guid: d78a5622b174fc44380a46c6436e3aee, type: 3}
 --- !u!4 &1898107798510133732 stripped
 Transform:
@@ -848,16 +849,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.547156, y: 6.1699123, z: 15.605051}
   m_Center: {x: -3.0566442, y: 1.7487721, z: 6.246483}
---- !u!114 &7188644200082538726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5649940004436569366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e35b627320077ff44be5d8537bda8172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageValue: 10
