@@ -10,9 +10,6 @@ namespace CMF
     public class AdvancedWalkerController : Controller
     {
 
-        public AnimationControlTest AnimatorController;
-        [SerializeField] private Platform CreatedPlatform;
-
         //References to attached components;
         protected Transform tr;
         protected Mover mover;
@@ -85,9 +82,11 @@ namespace CMF
 
         [SerializeField] private Sounds sounds;
 
-        [Header("Test")]
-        public float VelosityMagnitudeIndicator;
-        public bool isWalkTriggered;
+        [SerializeField] private AnimationControlTest _animatorController;
+        [SerializeField] private Platform CreatedPlatform;
+
+        [SerializeField] private FightController _fightController;
+        [SerializeField] private bool isFighting;
 
         //Get references to all necessary components;
         void Awake()
@@ -103,7 +102,8 @@ namespace CMF
             Setup();
 
             _playerRotationTransform = GetComponentInChildren<CameraMouseInput>().transform;
-            AnimatorController = GetComponentInChildren<AnimationControlTest>();
+            _animatorController = GetComponentInChildren<AnimationControlTest>();
+            _fightController = GetComponentInChildren<FightController>();
         }
 
         //This function is called right after Awake(); It can be overridden by inheriting scripts;
@@ -121,6 +121,8 @@ namespace CMF
             HandleCreatePlatformKeyInput();
             
             HandleJumpKeyInput();
+
+            CheckIsFighting();
         }
         private void HandleCreatePlatformKeyInput()
         {
@@ -153,6 +155,11 @@ namespace CMF
             }
 
             jumpKeyIsPressed = newJumpKeyPressedState;
+        }
+
+        private void CheckIsFighting()
+        {
+            isFighting = _fightController.IsFighting;
         }
 
         void FixedUpdate()
@@ -198,36 +205,34 @@ namespace CMF
             //Set mover velocity;		
             mover.SetVelocity(_velocity);
 
-            VelosityMagnitudeIndicator = _velocity.magnitude;
-
             if (_velocity.magnitude != 0 && currentControllerState == ControllerState.Grounded)
             {
-                AnimatorController.OnIdle?.Invoke(false);
-                AnimatorController.OnRun?.Invoke(true);
-                AnimatorController.OnFall?.Invoke(false);
+                _animatorController.OnIdle?.Invoke(false);
+                _animatorController.OnRun?.Invoke(true);
+                _animatorController.OnFall?.Invoke(false);
             }
             else if(_velocity.magnitude == 0 && currentControllerState == ControllerState.Grounded)
             {
-                AnimatorController.OnIdle?.Invoke(true);
-                AnimatorController.OnRun?.Invoke(false);
-                AnimatorController.OnFall?.Invoke(false);
+                _animatorController.OnIdle?.Invoke(true);
+                _animatorController.OnRun?.Invoke(false);
+                _animatorController.OnFall?.Invoke(false);
             } 
             else if(currentControllerState == ControllerState.Falling)
             {
-                AnimatorController.OnIdle?.Invoke(false);
-                AnimatorController.OnRun?.Invoke(false);
-                AnimatorController.OnFall?.Invoke(true);
+                _animatorController.OnIdle?.Invoke(false);
+                _animatorController.OnRun?.Invoke(false);
+                _animatorController.OnFall?.Invoke(true);
             }
             else
             {
-                AnimatorController.OnIdle?.Invoke(false);
-                AnimatorController.OnRun?.Invoke(false);
-                AnimatorController.OnFall?.Invoke(false);
+                _animatorController.OnIdle?.Invoke(false);
+                _animatorController.OnRun?.Invoke(false);
+                _animatorController.OnFall?.Invoke(false);
             }
 
             if(jumpKeyWasPressed)
             {
-                AnimatorController.OnJump?.Invoke();
+                _animatorController.OnJump?.Invoke();
             }
 
             //Store velocity for next frame;
@@ -252,7 +257,7 @@ namespace CMF
         protected virtual Vector3 CalculateMovementDirection()
         {
             //If no character input script is attached to this object, return;
-            if (characterInput == null)
+            if (characterInput == null || isFighting)
                 return Vector3.zero;
 
             Vector3 _velocity = Vector3.zero;
