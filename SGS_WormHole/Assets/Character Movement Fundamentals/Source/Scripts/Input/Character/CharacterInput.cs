@@ -12,6 +12,8 @@ namespace CMF
 
         public abstract bool IsJumpKeyPressed();
 
+        public abstract bool IsFightKeyPressed();
+
         public abstract bool IsCreatePlatformKeyPressed();
 
         public abstract bool IsCreatePlatformKeyUp();

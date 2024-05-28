@@ -10,7 +10,7 @@ namespace CMF
     public class AdvancedWalkerController : Controller
     {
 
-        public Animator Animator;
+        public AnimationControlTest AnimatorController;
         [SerializeField] private Platform CreatedPlatform;
 
         //References to attached components;
@@ -85,6 +85,10 @@ namespace CMF
 
         [SerializeField] private Sounds sounds;
 
+        [Header("Test")]
+        public float VelosityMagnitudeIndicator;
+        public bool isWalkTriggered;
+
         //Get references to all necessary components;
         void Awake()
         {
@@ -99,6 +103,7 @@ namespace CMF
             Setup();
 
             _playerRotationTransform = GetComponentInChildren<CameraMouseInput>().transform;
+            AnimatorController = GetComponentInChildren<AnimationControlTest>();
         }
 
         //This function is called right after Awake(); It can be overridden by inheriting scripts;
@@ -192,14 +197,37 @@ namespace CMF
 
             //Set mover velocity;		
             mover.SetVelocity(_velocity);
-            
-            if (_velocity.magnitude != 0)
+
+            VelosityMagnitudeIndicator = _velocity.magnitude;
+
+            if (_velocity.magnitude != 0 && currentControllerState == ControllerState.Grounded)
             {
-                Animator.SetTrigger("Walk");
+                AnimatorController.OnIdle?.Invoke(false);
+                AnimatorController.OnRun?.Invoke(true);
+                AnimatorController.OnFall?.Invoke(false);
+            }
+            else if(_velocity.magnitude == 0 && currentControllerState == ControllerState.Grounded)
+            {
+                AnimatorController.OnIdle?.Invoke(true);
+                AnimatorController.OnRun?.Invoke(false);
+                AnimatorController.OnFall?.Invoke(false);
+            } 
+            else if(currentControllerState == ControllerState.Falling)
+            {
+                AnimatorController.OnIdle?.Invoke(false);
+                AnimatorController.OnRun?.Invoke(false);
+                AnimatorController.OnFall?.Invoke(true);
             }
             else
             {
-                Animator.SetTrigger("Idle");
+                AnimatorController.OnIdle?.Invoke(false);
+                AnimatorController.OnRun?.Invoke(false);
+                AnimatorController.OnFall?.Invoke(false);
+            }
+
+            if(jumpKeyWasPressed)
+            {
+                AnimatorController.OnJump?.Invoke();
             }
 
             //Store velocity for next frame;
