@@ -22,9 +22,13 @@ public class AnimationControlTest : MonoBehaviour
     public readonly string landHardName = "LandHard";
     public readonly string fightName = "Fight";
     public readonly string healName = "Heal";
+
     public readonly string fightAnimName = "Fight";
+    public readonly string healAnimName = "Heal";
 
     public Animator Animator;
+
+    public bool isHealing;
     
     void Start()
     {
@@ -48,6 +52,18 @@ public class AnimationControlTest : MonoBehaviour
         {
             return true;
         }
+        return false;
+    }
+
+    public bool GetHealAnimState()
+    {
+        var animatorStateInfo = Animator.GetCurrentAnimatorStateInfo(0);
+
+        if(animatorStateInfo.IsName(healAnimName))
+        {
+            return true;
+        }
+
         return false;
     }
 

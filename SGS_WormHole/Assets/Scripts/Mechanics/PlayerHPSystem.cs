@@ -7,19 +7,24 @@ using UnityEngine;
 
 public class PlayerHPSystem : MonoBehaviour
 {
-    public SpawnSystem spawnSystem;
+    [SerializeField] private AnimationControlTest _animatorController;
+    [SerializeField] private SpawnSystem _spawnSystem;
     public Menu menu;
     public Action<int> OnDemage;
     public Action<int> OnHeal;
     
     [SerializeField] private int _health = 100;
     private int _maxHealth;
+    //public bool IsHealing { get; private set; }
+    public bool IsHealing;
+    public bool isHealingTrigger;
 
     private void Start()
     {
-        spawnSystem = GetComponent<SpawnSystem>();
-
         _maxHealth = _health;
+
+        _spawnSystem = GetComponent<SpawnSystem>();
+        _animatorController = GetComponent<AnimationControlTest>();
         
         OnDemage += Damage;
         OnHeal += Heal;
@@ -32,20 +37,38 @@ public class PlayerHPSystem : MonoBehaviour
         
         if(_health <= 0)
         {
-            //gameObject.SetActive(false);
-            //spawnSystem.OnRespawn?.Invoke();
             menu.Activate();
-            //_health = _maxHealth;
         }
     }
 
     private void Heal(int heal)
     {
+        if(IsHealing)
+        {
+            isHealingTrigger = true;
+            return;
+        }
+
         Debug.Log("Получил хил");
+        IsHealing = true;
         _health += heal;
+        _animatorController.OnHeal?.Invoke();
+
+        StartCoroutine(CheckHealing());
         
         if(_health > _maxHealth)
             _health = _maxHealth;
+    }
+
+    private IEnumerator CheckHealing()
+    {
+        while (IsHealing)
+        {
+            IsHealing = _animatorController.GetHealAnimState();
+            yield return null;
+        }
+
+        IsHealing = false;
     }
 
     public int GetHP()
