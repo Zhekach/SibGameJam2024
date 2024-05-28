@@ -22,6 +22,7 @@ public class AnimationControlTest : MonoBehaviour
     public readonly string landHardName = "LandHard";
     public readonly string fightName = "Fight";
     public readonly string healName = "Heal";
+    public readonly string fightAnimName = "Fight";
 
     public Animator Animator;
     
@@ -37,6 +38,17 @@ public class AnimationControlTest : MonoBehaviour
         OnHeal += Heal;
 
         Animator = GetComponentInChildren<Animator>();
+    }
+
+    public bool GetFightAnimState()
+    {
+        var animatorStateInfo = Animator.GetCurrentAnimatorStateInfo(0);
+
+        if(animatorStateInfo.IsName(fightAnimName))
+        {
+            return true;
+        }
+        return false;
     }
 
     private void Idle(bool isIdle)
