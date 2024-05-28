@@ -22,7 +22,7 @@ namespace CMF
             transform.position = tr.position + tr.rotation * Vector3.forward * _platformDistance + Vector3.up * _defaultHeight;
             LifeSeconds = _timeBeforeHide;
 
-            _material.SetFloat("_Mode", 0f);
+            _material.SetFloat("_Mode", 3f);
             _material.SetColor("_Color", _NormalColor);
             gameObject.SetActive(true);
             
@@ -33,7 +33,7 @@ namespace CMF
         {
             transform.position = tr.position + tr.rotation * Vector3.forward * _platformDistance + Vector3.up * _defaultHeight;
 
-            _material.SetFloat("_Mode", 2f);
+            _material.SetFloat("_Mode", 3f);
             _material.SetColor("_Color",_TransporentColor);
             gameObject.SetActive(true);
         }
