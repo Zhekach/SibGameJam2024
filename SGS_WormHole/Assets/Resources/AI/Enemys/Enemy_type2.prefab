@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 3974538557994357554, guid: e82915a2e073509428a3e41b4152c44b, type: 3}
-  _target: {fileID: 0}
+  _target: {fileID: 8383272570333625742, guid: 4a59b9650124e034cb15ecc7caf70ae3, type: 3}
   _gun: {fileID: 7116949401085937663}
 --- !u!4 &7962631523392656889 stripped
 Transform:
