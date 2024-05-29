@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35b627320077ff44be5d8537bda8172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageValue: 10
+  isFighting: 0
 --- !u!114 &4933313078284881396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,3 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936447f81249c1e4fbb55c35de0b3f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  containingHP: 60
+  perHealHP: 60
