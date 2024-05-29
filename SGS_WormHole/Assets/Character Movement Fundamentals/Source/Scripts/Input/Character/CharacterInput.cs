@@ -17,5 +17,7 @@ namespace CMF
         public abstract bool IsCreatePlatformKeyPressed();
 
         public abstract bool IsCreatePlatformKeyUp();
+
+        public abstract bool IsHealingKeyPressed();
     }
 }

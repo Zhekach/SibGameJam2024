@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class FightController : MonoBehaviour
 {
-    public bool IsFighting { get; private set; }
-
     protected CharacterInput characterInput;
     protected AnimationControlTest animatorController;
+
+    public bool IsFighting { get; private set; }
 
     private void Awake()
     {

@@ -87,6 +87,7 @@ namespace CMF
 
         [SerializeField] private FightController _fightController;
         [SerializeField] private bool isFighting;
+        [SerializeField] private bool isHealing;
 
         //Get references to all necessary components;
         void Awake()

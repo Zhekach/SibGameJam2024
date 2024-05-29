@@ -11,6 +11,7 @@ namespace CMF
 		public string _verticalInputAxis = "Vertical";
 		public KeyCode _jumpKey = KeyCode.Space;
 		public KeyCode _createPlatformKey = KeyCode.F;
+		public KeyCode _healingKey = KeyCode.H;
 
 		//If this is enabled, Unity's internal input smoothing is bypassed;
 		public bool useRawInput = true;
@@ -50,5 +51,10 @@ namespace CMF
 		{
 			return Input.GetKeyUp(_createPlatformKey);
 		}
+
+        public override bool IsHealingKeyPressed()
+        {
+            return Input.GetKey(_healingKey);
+        }
     }
 }
