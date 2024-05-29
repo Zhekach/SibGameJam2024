@@ -15,9 +15,10 @@ public class LopataDamageTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        isFighting = fightController.IsFighting;
+
         if(other.gameObject.TryGetComponent(out EnemyHPSystem playerHpSystem) && isFighting)
         {
-            isFighting = fightController.IsFighting;
 
             playerHpSystem.OnDemage?.Invoke(damageValue);
         }
@@ -25,9 +26,10 @@ public class LopataDamageTrigger : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        isFighting = fightController.IsFighting;
+
         if (collision.gameObject.TryGetComponent(out EnemyHPSystem playerHpSystem) && isFighting)
         {
-            isFighting = fightController.IsFighting;
 
             playerHpSystem.OnDemage?.Invoke(damageValue);
         }
