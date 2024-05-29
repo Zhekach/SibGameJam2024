@@ -4,7 +4,6 @@ using System.Threading;
 using System.Collections.Generic;
 using UnityEngine;
 using CMF;
-using UnityEditor.XR;
 
 [RequireComponent(typeof(SpawnSystem))]
 
