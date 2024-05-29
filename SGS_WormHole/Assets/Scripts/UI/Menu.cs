@@ -14,7 +14,7 @@ public class Menu : MonoBehaviour
 
     private int _health;
 
-    private void Start()
+    private void Awake()
     {
         Deactivate();
     }
