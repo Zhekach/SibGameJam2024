@@ -16,6 +16,8 @@ public class SliderUISystem : MonoBehaviour
     {
         _index = 0;
         _image.sprite = _sprites[_index];
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     
     public void SwitchImage()
