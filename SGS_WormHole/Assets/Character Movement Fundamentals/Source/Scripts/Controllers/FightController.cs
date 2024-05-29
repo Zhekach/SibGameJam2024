@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FightController : MonoBehaviour
 {
+    public bool IsFighting { get; private set; }
 
     protected CharacterInput characterInput;
     protected AnimationControlTest animatorController;
@@ -17,7 +18,9 @@ public class FightController : MonoBehaviour
 
     void Update()
     {
-        if (characterInput != null && characterInput.IsFightKeyPressed() == true)
+        IsFighting = animatorController.GetFightAnimState();
+
+        if (characterInput.IsFightKeyPressed() == true && IsFighting == false)
         {
             animatorController.OnFight?.Invoke();
         }
